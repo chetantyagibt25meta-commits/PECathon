@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h2>🍔 Campus Food Hub - Vendor</h2>
+        <div class="nav-right">
+            <span id="vendorName">Welcome, Vendor</span>
+            <button onclick="logout()" class="btn-logout">Logout</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="dashboard">
+            <aside class="sidebar">
+                <button class="menu-btn active" onclick="showVendorSection('menu')">🍕 Manage Menu</button>
+                <button class="menu-btn" onclick="showVendorSection('vendorOrders')">📦 Orders</button>
+                <button class="menu-btn" onclick="showVendorSection('vendorReviews')">⭐ Reviews</button>
+                <button class="menu-btn" onclick="showVendorSection('profile')">👤 Profile</button>
+            </aside>
+
+            <main class="main-content">
+                <!-- Manage Menu Section -->
+                <section id="menu" class="section active">
+                    <h2>Manage Menu</h2>
+                    <button onclick="showAddItemForm()" class="btn-primary">+ Add New Item</button>
+                    
+                    <div id="addItemForm" class="form-container" style="display:none;">
+                        <h3>Add Food Item</h3>
+                        <input type="text" id="itemName" placeholder="Item Name" required>
+                        <input type="number" id="itemPrice" placeholder="Price (₹)" required>
+                        <select id="itemCategory" required>
+                            <option value="">Select Category</option>
+                            <option value="Snacks">Snacks</option>
+                            <option value="Meals">Meals</option>
+                            <option value="Beverages">Beverages</option>
+                            <option value="Desserts">Desserts</option>
+                        </select>
+                        <textarea id="itemDescription" placeholder="Description" rows="3"></textarea>
+                        <button onclick="addMenuItem()" class="btn-primary">Add Item</button>
+                        <button onclick="cancelAddItem()" class="btn-secondary">Cancel</button>
+                    </div>
+
+                    <div id="vendorMenuList" class="menu-list"></div>
+                </section>
+
+                <!-- Orders Section -->
+                <section id="vendorOrders" class="section">
+                    <h2>Incoming Orders</h2>
+                    <div id="vendorOrdersList" class="orders-list"></div>
+                </section>
+
+                <!-- Reviews Section -->
+                <section id="vendorReviews" class="section">
+                    <h2>Customer Reviews</h2>
+                    <div id="vendorReviewsList" class="reviews-list"></div>
+                </section>
+
+                <!-- Profile Section -->
+                <section id="profile" class="section">
+                    <h2>Vendor Profile</h2>
+                    <div class="profile-info">
+                        <p><strong>Vendor Name:</strong> <span id="profileName"></span></p>
+                        <p><strong>Contact:</strong> <span id="profileContact">+91-XXXXXXXXXX</span></p>
+                        <p><strong>Location:</strong> <span id="profileLocation">Campus Cafeteria</span></p>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
